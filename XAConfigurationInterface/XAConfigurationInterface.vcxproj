@@ -17,6 +17,7 @@
     <ClInclude Include="IConfigurationObserver.h" />
     <ClInclude Include="IConfigurationSubject.h" />
     <ClInclude Include="IUserConfiguration.h" />
+    <ClInclude Include="UserConfigurationResult.h" />
     <ClInclude Include="XAConfigurationLogger.h" />
     <ClInclude Include="XAConfigurationMacro.h" />
   </ItemGroup>

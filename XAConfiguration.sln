@@ -22,6 +22,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAUserConfiguration", "XAUs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Include", "Include", "{A8902E8D-215B-4823-ADE5-18C81FB386B5}"
+	ProjectSection(SolutionItems) = preProject
+		XAUserConfiguration.h = XAUserConfiguration.h
+		XAUserConfigurationExportMacro.h = XAUserConfigurationExportMacro.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution

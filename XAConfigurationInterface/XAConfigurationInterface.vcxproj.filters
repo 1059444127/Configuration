@@ -35,5 +35,8 @@
     <ClInclude Include="IConfigurationObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UserConfigurationResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
