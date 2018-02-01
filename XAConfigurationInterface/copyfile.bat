@@ -1,1 +1,1 @@
-xcopy XA*.h ..\..\..\..\UIH\include\PanGu\XAConfiguration\ /R /Y
+xcopy *.h ..\..\..\..\UIH\include\PanGu\XAConfiguration\ /R /Y

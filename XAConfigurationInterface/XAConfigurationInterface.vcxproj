@@ -14,6 +14,7 @@
     <None Include="copyfile.bat" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IUserConfiguration.h" />
     <ClInclude Include="XAConfigurationLogger.h" />
     <ClInclude Include="XAConfigurationMacro.h" />
   </ItemGroup>
