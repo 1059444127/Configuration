@@ -6,6 +6,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationFactory", "XAConfigurationFactory\XAConfigurationFactory.vcxproj", "{15107D0D-BD5D-468B-8D7E-F0CEB0597496}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C47FFB42-F6E6-47AC-BE9D-027BB295DB65} = {C47FFB42-F6E6-47AC-BE9D-027BB295DB65}
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B} = {8B0851D1-6DB5-454B-A5F8-74E51EEF744B}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationFactory_UT", "XAConfigurationFactory_UT\XAConfigurationFactory_UT.vcxproj", "{BD7505D6-F338-4CBD-8BF1-FD8254632F39}"
@@ -15,9 +16,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationFactory_UT",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationInterface", "XAConfigurationInterface\XAConfigurationInterface.vcxproj", "{C47FFB42-F6E6-47AC-BE9D-027BB295DB65}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAUserConfiguration", "XAUserConfiguration\XAUserConfiguration.vcxproj", "{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C47FFB42-F6E6-47AC-BE9D-027BB295DB65} = {C47FFB42-F6E6-47AC-BE9D-027BB295DB65}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Include", "Include", "{A8902E8D-215B-4823-ADE5-18C81FB386B5}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = http://tfs:8080/tfs/defaultcollection
 		SccLocalPath0 = .
@@ -31,6 +39,9 @@ Global
 		SccProjectUniqueName3 = XAConfigurationInterface\\XAConfigurationInterface.vcxproj
 		SccProjectName3 = XAConfigurationInterface
 		SccLocalPath3 = XAConfigurationInterface
+		SccProjectUniqueName4 = XAUserConfiguration\\XAUserConfiguration.vcxproj
+		SccProjectName4 = XAUserConfiguration
+		SccLocalPath4 = XAUserConfiguration
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -71,6 +82,16 @@ Global
 		{C47FFB42-F6E6-47AC-BE9D-027BB295DB65}.Release|Win32.ActiveCfg = Release|x64
 		{C47FFB42-F6E6-47AC-BE9D-027BB295DB65}.Release|x64.ActiveCfg = Release|x64
 		{C47FFB42-F6E6-47AC-BE9D-027BB295DB65}.Release|x64.Build.0 = Release|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Debug|Win32.ActiveCfg = Debug|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Debug|x64.ActiveCfg = Debug|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Debug|x64.Build.0 = Debug|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Release|Mixed Platforms.Build.0 = Release|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Release|Win32.ActiveCfg = Release|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Release|x64.ActiveCfg = Release|x64
+		{8B0851D1-6DB5-454B-A5F8-74E51EEF744B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
