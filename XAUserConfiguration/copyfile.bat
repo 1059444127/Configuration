@@ -1,1 +1,1 @@
-xcopy XA*.H ..\ /R /Y
+xcopy XA*.H ..\include\ /R /Y

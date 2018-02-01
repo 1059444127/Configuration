@@ -1,7 +1,8 @@
 #pragma once
 #include "XAConfiguration/IUserConfiguration.h"
+#include "XAUserConfigurationExportMacro.h"
 
-class XAUserConfiguration : public IUserConfiguration
+class XA_UserConfiguration_Export XAUserConfiguration : public IUserConfiguration
 {
 public:
 	virtual int LoadUserConfig(unsigned category);

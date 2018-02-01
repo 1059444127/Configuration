@@ -1,4 +1,5 @@
-#pragma once
+#ifndef I_USER_CONFIGURATION_H
+#define I_USER_CONFIGURATION_H
 #include <string>
 
 class IUserConfiguration
@@ -11,3 +12,5 @@ public:
 
 	virtual ~IUserConfiguration() {};
 };
+
+#endif

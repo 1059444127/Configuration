@@ -1,6 +1,7 @@
 #include "XAConfigurationFactory.h"
 #include <boost/thread/mutex.hpp>
-#include "../XAConfigurationInterface/XAConfigurationLogger.h"
+#include "XAConfiguration/XAConfigurationLogger.h"
+#include "XAUserConfiguration.h"
 
 XAConfigurationFactory* XAConfigurationFactory::_pInstance;
 boost::mutex XA_Configuration_Mutex;
@@ -23,4 +24,9 @@ XAConfigurationFactory* XAConfigurationFactory::Instance()
 XAConfigurationFactory::~XAConfigurationFactory()
 {
 	SAFE_DELETE_ELEMENT(_pInstance);
+}
+
+IUserConfiguration* XAConfigurationFactory::CreateUserConfiguration()
+{
+	return new XAUserConfiguration();
 }
