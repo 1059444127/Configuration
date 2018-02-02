@@ -2,6 +2,7 @@
 #include "XAConfiguration/IUserConfiguration.h"
 #include "XAUserConfigurationExportMacro.h"
 #include <McsfFileParser/mcsf_ifile_parser.h>
+#include <map>
 
 class XA_UserConfiguration_Export XAUserConfiguration : public IUserConfiguration
 {
@@ -15,4 +16,5 @@ public:
 	virtual ~XAUserConfiguration();
 private:
 	Mcsf::IFileParser* _pFileParser;
+	std::map<std::string, std::string> _configItems;
 };

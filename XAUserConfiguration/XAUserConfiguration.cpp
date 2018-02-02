@@ -20,10 +20,33 @@ void XAUserConfiguration::Init()
 		return;
 	}
 
-	//_pFileParser->GetStringValueByTag(CONFIG_ITEM, )
+	std::vector<std::string> configNodes;
+	if(!_pFileParser->GetStringValueByTag(CONFIG_ITEM, &configNodes))
+	{
+		LOG_ERROR_XA_Configuration << "Failed to parse Tag " << CONFIG_ITEM << LOG_END;
+		return;
+	}
+	
+	for (auto iter = configNodes.begin(); iter!= configNodes.end(); iter++)
+	{
+		std::string name;
+		if(!_pFileParser->GetAttributeStringValue(*iter, NAME_ATTRIBUTE, &name))
+		{
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << NAME_ATTRIBUTE  << "] From " << *iter << LOG_END;
+			continue;
+		}
+		std::string location;
+		if(!_pFileParser->GetAttributeStringValue(*iter, LOCATION_ATTRIBUTE, &location))
+		{
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << LOCATION_ATTRIBUTE << "] From " << *iter << LOG_END;
+			continue;
+		}
+		_configItems[name] = location;
+	}
+
 }
 
-XAUserConfiguration::XAUserConfiguration()
+XAUserConfiguration::XAUserConfiguration() : _configItems()
 {
 	Init();
 }

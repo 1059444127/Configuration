@@ -2,7 +2,9 @@
 
 #define USER_CONFIG_PATH "UserConfigPath"
 #define CONFIG_INDEX_FILE "ConfigIndex.xml"
-#define CONFIG_ITEM "Item"
+#define CONFIG_ITEM "/Item"
+#define NAME_ATTRIBUTE "name"
+#define LOCATION_ATTRIBUTE "location"
 
 
 #define XA_Configuration_DISALLOW_COPY(classname) \
