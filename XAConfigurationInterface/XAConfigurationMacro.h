@@ -3,8 +3,10 @@
 #define USER_CONFIG_PATH "UserConfigPath"
 #define CONFIG_INDEX_FILE "ConfigIndex.xml"
 #define CONFIG_ITEM "/Item"
+#define ID_ATTRIBUTE "id"
 #define NAME_ATTRIBUTE "name"
 #define LOCATION_ATTRIBUTE "location"
+#define XA_CONFIGURATION_EMPTY_STRING ""
 
 
 #define XA_Configuration_DISALLOW_COPY(classname) \

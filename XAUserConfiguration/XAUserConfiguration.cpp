@@ -3,6 +3,7 @@
 #include "XAConfiguration/XAConfigurationLogger.h"
 #include "Common/McsfSystemEnvironmentConfig/mcsf_systemenvironment_factory.h"
 #include <XAConfiguration/XAConfigurationMacro.h>
+#include "XAConfiguration/UserConfigurationResult.h"
 
 void XAUserConfiguration::Init()
 {
@@ -20,28 +21,37 @@ void XAUserConfiguration::Init()
 		return;
 	}
 
-	std::vector<std::string> configNodes;
-	if(!_pFileParser->GetStringValueByTag(CONFIG_ITEM, &configNodes))
+	int configItemCount;
+	if(!_pFileParser->GetElementNumber(CONFIG_ITEM, &configItemCount))
 	{
 		LOG_ERROR_XA_Configuration << "Failed to parse Tag " << CONFIG_ITEM << LOG_END;
 		return;
 	}
+
 	
-	for (auto iter = configNodes.begin(); iter!= configNodes.end(); iter++)
+	for (int i=0; i<configItemCount; i++)
 	{
-		std::string name;
-		if(!_pFileParser->GetAttributeStringValue(*iter, NAME_ATTRIBUTE, &name))
+		std::ostringstream os;
+		os << CONFIG_ITEM << "[" << i << "]";
+		std::string itemConfigPath = os.str();
+
+		std::string id;
+		if(!_pFileParser->GetAttributeStringValue(itemConfigPath, ID_ATTRIBUTE, &id))
 		{
-			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << NAME_ATTRIBUTE  << "] From " << *iter << LOG_END;
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << ID_ATTRIBUTE  << "] From " << itemConfigPath << LOG_END;
 			continue;
 		}
 		std::string location;
-		if(!_pFileParser->GetAttributeStringValue(*iter, LOCATION_ATTRIBUTE, &location))
+		if(!_pFileParser->GetAttributeStringValue(itemConfigPath, LOCATION_ATTRIBUTE, &location))
 		{
-			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << LOCATION_ATTRIBUTE << "] From " << *iter << LOG_END;
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << LOCATION_ATTRIBUTE << "] From " << itemConfigPath << LOG_END;
 			continue;
 		}
-		_configItems[name] = location;
+
+		istringstream is(id);
+		unsigned int uiCategory;
+		is >> uiCategory;
+		_configItems[uiCategory] = location;
 	}
 
 }
@@ -63,6 +73,44 @@ int XAUserConfiguration::SaveUserConfig(unsigned category)
 	return 0;
 }
 
+int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, int& value)
+{
+	return 0;
+}
+
+int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, int value)
+{
+	return 0;
+}
+
+int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, double& value)
+{
+	return 0;
+}
+
+int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, double value)
+{
+	return 0;
+}
+
+int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, bool& value)
+{
+	return 0;
+}
+
+int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, bool value)
+{
+	return 0;
+}
+
+std::string XAUserConfiguration::GetUserSettingDir(unsigned category)
+{
+	LOG_INFO_XA_Configuration << "Get User Setting Dir of category [" << category << "]" << LOG_END;
+	auto iter =_configItems.find(category);
+	if(iter == _configItems.end()) return XA_CONFIGURATION_EMPTY_STRING;
+	return iter->second;
+}
+
 int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, const std::string& value)
 {
 	LOG_INFO_XA_Configuration << "Set User Config with category [" << category << "] for tag [" << tag << "] of value [" << value << "]" << LOG_END;
@@ -72,7 +120,10 @@ int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, const st
 int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, std::string& value)
 {
 	LOG_INFO_XA_Configuration << "Get User Config with category [" << category << "] for tag [" << tag << "] of value [" << value << "]" << LOG_END;
-	return 0;
+	std::string userSettingDir = GetUserSettingDir(category);
+	if(userSettingDir.length() <= 0) {return UserConfigurationResult::InvalidCategory;}
+
+	return UserConfigurationResult::Ok;
 }
 
 XAUserConfiguration::~XAUserConfiguration()
@@ -88,3 +139,4 @@ XAUserConfiguration::~XAUserConfiguration()
 
 //TODO: Add EA Chart to source control
 //TODO: Add Sample Containee
+//TODO: Received User Configuration Changed Event
