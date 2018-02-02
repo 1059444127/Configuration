@@ -26,7 +26,13 @@ XAConfigurationFactory::~XAConfigurationFactory()
 	SAFE_DELETE_ELEMENT(_pInstance);
 }
 
-IUserConfiguration* XAConfigurationFactory::CreateUserConfiguration()
+XAConfigurationFactory::XAConfigurationFactory()
 {
-	return new XAUserConfiguration();
+	_pUserConfiguration = new XAUserConfiguration();
+}
+
+
+IUserConfiguration* XAConfigurationFactory::GetUserConfiguration()
+{
+	return _pUserConfiguration;
 }
