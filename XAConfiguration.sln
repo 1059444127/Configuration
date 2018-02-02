@@ -22,10 +22,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAUserConfiguration", "XAUs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Include", "Include", "{A8902E8D-215B-4823-ADE5-18C81FB386B5}"
-	ProjectSection(SolutionItems) = preProject
-		include\XAUserConfiguration.h = include\XAUserConfiguration.h
-		include\XAUserConfigurationExportMacro.h = include\XAUserConfigurationExportMacro.h
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Locally Run", "Locally Run", "{4C9C34D1-E011-45D1-B90D-9B14BD394F87}"
 EndProject

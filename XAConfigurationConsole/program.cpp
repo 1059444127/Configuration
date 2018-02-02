@@ -7,6 +7,8 @@ static int main()
 	auto configurationFactory = XAConfigurationFactory::Instance();
 	IUserConfiguration* userConfiguration = configurationFactory->GetUserConfiguration();
 
+	userConfiguration->LoadUserConfig(11);
+
 	cin.get();
 	return 0;
 }

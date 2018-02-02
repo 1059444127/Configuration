@@ -138,7 +138,7 @@ int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, const st
 
 int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, std::string& value)
 {
-	LOG_INFO_XA_Configuration << "Get User Config with category [" << category << "] for tag [" << tag << "] of value [" << value << "]" << LOG_END;
+	LOG_INFO_XA_Configuration << "Get User Config with category [" << category << "] for tag [" << tag << "]" << LOG_END;
 	std::string userSettingDir = GetUserSettingDir(category);
 	if(userSettingDir.length() <= 0) {return UserConfigurationResult::InvalidCategory;}
 
