@@ -3,11 +3,11 @@
 #include "XAUserConfigurationExportMacro.h"
 #include <McsfFileParser/mcsf_ifile_parser.h>
 #include <map>
+#include "XAUserConfigItem.h"
 
 class XA_UserConfiguration_Export XAUserConfiguration : public IUserConfiguration
 {
 public:
-	void Init();
 	XAUserConfiguration();
 	virtual int LoadUserConfig(unsigned category);
 	virtual int SaveUserConfig(unsigned category);
@@ -22,6 +22,8 @@ public:
 	virtual ~XAUserConfiguration();
 private:
 	Mcsf::IFileParser* _pFileParser;
-	std::map<unsigned int, std::string> _configItems;
+	std::map<unsigned int, std::string> _categoryLocationMap;
+	std::map<unsigned int, std::map<unsigned int, XAUserConfigItem>> _configItems;
 	std::string GetUserSettingDir(unsigned int category);
+	void Init();
 };

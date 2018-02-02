@@ -51,12 +51,12 @@ void XAUserConfiguration::Init()
 		istringstream is(id);
 		unsigned int uiCategory;
 		is >> uiCategory;
-		_configItems[uiCategory] = location;
+		_categoryLocationMap[uiCategory] = location;
 	}
 
 }
 
-XAUserConfiguration::XAUserConfiguration() : _configItems()
+XAUserConfiguration::XAUserConfiguration() : _categoryLocationMap(), _configItems()
 {
 	Init();
 }
@@ -64,6 +64,25 @@ XAUserConfiguration::XAUserConfiguration() : _configItems()
 int XAUserConfiguration::LoadUserConfig(unsigned category)
 {
 	LOG_INFO_XA_Configuration << "Load User Config with category [" << category << "]" << LOG_END;
+	auto iter = _categoryLocationMap.find(category);
+	if(iter == _categoryLocationMap.end()) {return UserConfigurationResult::InvalidCategory;}
+
+	std::string sUserSettingDir = iter->second;
+	std::string sConfigFileContent;
+	if(!_pFileParser->GetFileContentFromUserSettingsDir(sUserSettingDir, sConfigFileContent))
+	{
+		LOG_ERROR_XA_Configuration << "Fail to Get File Content From User Setting Dir [" << sUserSettingDir << "]" << LOG_END;
+		return UserConfigurationResult::InvalidFile;
+	}
+
+	if(!_pFileParser->ParseByString(sConfigFileContent))
+	{
+		LOG_ERROR_XA_Configuration << "Fail to parse From File Content [" << sConfigFileContent << "]" << LOG_END;
+		return UserConfigurationResult::InvalidXmlString;
+	}
+
+	
+
 	return 0;
 }
 
@@ -106,8 +125,8 @@ int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, bool val
 std::string XAUserConfiguration::GetUserSettingDir(unsigned category)
 {
 	LOG_INFO_XA_Configuration << "Get User Setting Dir of category [" << category << "]" << LOG_END;
-	auto iter =_configItems.find(category);
-	if(iter == _configItems.end()) return XA_CONFIGURATION_EMPTY_STRING;
+	auto iter =_categoryLocationMap.find(category);
+	if(iter == _categoryLocationMap.end()) return XA_CONFIGURATION_EMPTY_STRING;
 	return iter->second;
 }
 
