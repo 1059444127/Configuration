@@ -1,5 +1,10 @@
 #pragma once
 
+#define USER_CONFIG_PATH "UserConfigPath"
+#define CONFIG_INDEX_FILE "ConfigIndex.xml"
+#define CONFIG_ITEM "Item"
+
+
 #define XA_Configuration_DISALLOW_COPY(classname) \
     classname(const classname & );
 #define XA_Configuration_DISALLOW_ASSIGN(classname) \

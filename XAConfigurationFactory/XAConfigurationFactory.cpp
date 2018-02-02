@@ -23,6 +23,7 @@ XAConfigurationFactory* XAConfigurationFactory::Instance()
 
 XAConfigurationFactory::~XAConfigurationFactory()
 {
+	SAFE_DELETE_ELEMENT(_pUserConfiguration);
 	SAFE_DELETE_ELEMENT(_pInstance);
 }
 
