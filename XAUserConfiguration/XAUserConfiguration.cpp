@@ -67,8 +67,17 @@ int XAUserConfiguration::LoadUserConfig(unsigned category)
 	auto iter = _categoryLocationMap.find(category);
 	if(iter == _categoryLocationMap.end()) {return UserConfigurationResult::InvalidCategory;}
 
-	std::string sUserSettingDir = iter->second;
+	//std::string sUserSettingDir = "D:\\X-SW\\XA\\Trunk\\UIH\\appdata\\user_settings\\users\\default_user\\config\\exam\\ExamConfig.xml";//iter->second;
+	std::string sUserSettingDir = "D:\\X-SW\\XA\\Trunk\\UIH\\appdata\\user_settings\\users\\default_user\\config\\exam\\ExamConfig.xml";//iter->second;
 	std::string sConfigFileContent;
+
+	if(!_pFileParser->OpenFromUserSettingsDir(sUserSettingDir))
+	{
+		LOG_ERROR_XA_Configuration << "Fail to Get File Content From User Setting Dir [" << sUserSettingDir << "]" << LOG_END;
+		return UserConfigurationResult::InvalidFile;
+	}
+
+	//
 	if(!_pFileParser->GetFileContentFromUserSettingsDir(sUserSettingDir, sConfigFileContent))
 	{
 		LOG_ERROR_XA_Configuration << "Fail to Get File Content From User Setting Dir [" << sUserSettingDir << "]" << LOG_END;
@@ -81,7 +90,52 @@ int XAUserConfiguration::LoadUserConfig(unsigned category)
 		return UserConfigurationResult::InvalidXmlString;
 	}
 
-	
+	int itemNumber;
+	if(!_pFileParser->GetElementNumber(CONFIG_ITEM, &itemNumber))
+	{
+		LOG_ERROR_XA_Configuration << "Failed to parse Tag " << CONFIG_ITEM << LOG_END;
+		return UserConfigurationResult::InvalidFile;		
+	}
+
+	std::map<unsigned int, XAUserConfigItem> userConfigItemMap;
+	for (int i=0; i<itemNumber; i++)
+	{
+		std::ostringstream os;
+		os << CONFIG_ITEM << "[" << i << "]";
+		std::string itemConfigPath = os.str();
+
+		std::string id;
+		if(!_pFileParser->GetAttributeStringValue(itemConfigPath, ID_ATTRIBUTE, &id))
+		{
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << ID_ATTRIBUTE  << "] From " << itemConfigPath << LOG_END;
+			continue;
+		}
+		std::string name;
+		if(!_pFileParser->GetAttributeStringValue(itemConfigPath, NAME_ATTRIBUTE, &name))
+		{
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << NAME_ATTRIBUTE << "] From " << itemConfigPath << LOG_END;
+			continue;
+		}
+
+		std::string value;
+		if(!_pFileParser->GetAttributeStringValue(itemConfigPath, VALUE_ATTRIBUTE, &value))
+		{
+			LOG_ERROR_XA_Configuration << "Failed to Get Attribute [" << VALUE_ATTRIBUTE << "] From " << itemConfigPath << LOG_END;
+			continue;
+		}
+
+		istringstream is(id);
+		unsigned int tag;
+		is >> tag;
+
+		XAUserConfigItem item;
+		item.Name = name;
+		item.Tag = tag;
+		item.Value = value;
+		userConfigItemMap[tag] = item; 
+	}
+
+	_configItems[category] = userConfigItemMap;
 
 	return 0;
 }
@@ -89,38 +143,10 @@ int XAUserConfiguration::LoadUserConfig(unsigned category)
 int XAUserConfiguration::SaveUserConfig(unsigned category)
 {
 	LOG_INFO_XA_Configuration << "Save User Config with category [" << category << "]" << LOG_END;
+	//TODO: 发送更新通知
 	return 0;
 }
 
-int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, int& value)
-{
-	return 0;
-}
-
-int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, int value)
-{
-	return 0;
-}
-
-int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, double& value)
-{
-	return 0;
-}
-
-int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, double value)
-{
-	return 0;
-}
-
-int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, bool& value)
-{
-	return 0;
-}
-
-int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, bool value)
-{
-	return 0;
-}
 
 std::string XAUserConfiguration::GetUserSettingDir(unsigned category)
 {
@@ -133,14 +159,33 @@ std::string XAUserConfiguration::GetUserSettingDir(unsigned category)
 int XAUserConfiguration::SetUserConfig(unsigned category, unsigned tag, const std::string& value)
 {
 	LOG_INFO_XA_Configuration << "Set User Config with category [" << category << "] for tag [" << tag << "] of value [" << value << "]" << LOG_END;
+	std::string userSettingDir = GetUserSettingDir(category);
+	if(userSettingDir.length() <= 0) {return UserConfigurationResult::InvalidCategory;}
+
+	
+
 	return 0;
 }
 
 int XAUserConfiguration::GetUserConfig(unsigned category, unsigned tag, std::string& value)
 {
 	LOG_INFO_XA_Configuration << "Get User Config with category [" << category << "] for tag [" << tag << "]" << LOG_END;
-	std::string userSettingDir = GetUserSettingDir(category);
-	if(userSettingDir.length() <= 0) {return UserConfigurationResult::InvalidCategory;}
+
+	auto categoryIter = _configItems.find(category);
+	if(categoryIter == _configItems.end())
+	{
+		LOG_ERROR_XA_Configuration << "No category [" << category << "] in Config Cache" << LOG_END;
+		return UserConfigurationResult::InvalidCategory;
+	}
+
+	auto tagIter = categoryIter->second.find(tag);
+	if(tagIter == categoryIter->second.end())
+	{
+		LOG_ERROR_XA_Configuration << "No Tag [" << tag << "] in Config Cache" << LOG_END;
+		return UserConfigurationResult::InvalidTag;
+	}
+
+	value = tagIter->second.Value;
 
 	return UserConfigurationResult::Ok;
 }

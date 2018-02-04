@@ -31,9 +31,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationConsole", "X
 		{C47FFB42-F6E6-47AC-BE9D-027BB295DB65} = {C47FFB42-F6E6-47AC-BE9D-027BB295DB65}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{8C55CEF8-C19A-48B5-9CCD-05BDEC0C1684}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationContainee", "XAConfigurationContainee\XAConfigurationContainee.vcxproj", "{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15107D0D-BD5D-468B-8D7E-F0CEB0597496} = {15107D0D-BD5D-468B-8D7E-F0CEB0597496}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = http://tfs:8080/tfs/defaultcollection
 		SccLocalPath0 = .
@@ -54,6 +61,10 @@ Global
 		SccProjectTopLevelParentUniqueName5 = XAConfiguration.sln
 		SccProjectName5 = XAConfigurationConsole
 		SccLocalPath5 = XAConfigurationConsole
+		SccProjectUniqueName6 = XAConfigurationContainee\\XAConfigurationContainee.vcxproj
+		SccProjectTopLevelParentUniqueName6 = XAConfiguration.sln
+		SccProjectName6 = XAConfigurationContainee
+		SccLocalPath6 = XAConfigurationContainee
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -114,6 +125,16 @@ Global
 		{026FCDA1-D2D1-48E5-863E-C25FDDB9303D}.Release|Win32.ActiveCfg = Release|x64
 		{026FCDA1-D2D1-48E5-863E-C25FDDB9303D}.Release|x64.ActiveCfg = Release|x64
 		{026FCDA1-D2D1-48E5-863E-C25FDDB9303D}.Release|x64.Build.0 = Release|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Debug|Win32.ActiveCfg = Debug|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Debug|x64.ActiveCfg = Debug|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Debug|x64.Build.0 = Debug|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Release|Mixed Platforms.Build.0 = Release|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Release|Win32.ActiveCfg = Release|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Release|x64.ActiveCfg = Release|x64
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,5 +142,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BD7505D6-F338-4CBD-8BF1-FD8254632F39} = {9EA921E4-2BAA-4E8F-9299-508BE7EDF873}
 		{026FCDA1-D2D1-48E5-863E-C25FDDB9303D} = {4C9C34D1-E011-45D1-B90D-9B14BD394F87}
+		{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC} = {4C9C34D1-E011-45D1-B90D-9B14BD394F87}
 	EndGlobalSection
 EndGlobal

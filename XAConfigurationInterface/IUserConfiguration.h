@@ -11,15 +11,6 @@ public:
 	virtual int SetUserConfig(unsigned int category, unsigned int tag, const std::string& value) = 0;
 	virtual int GetUserConfig(unsigned int category, unsigned int tag, std::string& value) = 0;
 
-	virtual int SetUserConfig(unsigned int category, unsigned int tag, int& value) = 0;
-	virtual int GetUserConfig(unsigned int category, unsigned int tag, int value) = 0;
-
-	virtual int SetUserConfig(unsigned int category, unsigned int tag, double& value) = 0;
-	virtual int GetUserConfig(unsigned int category, unsigned int tag, double value) = 0;
-
-	virtual int SetUserConfig(unsigned int category, unsigned int tag, bool& value) = 0;
-	virtual int GetUserConfig(unsigned int category, unsigned int tag, bool value) = 0;
-
 	virtual ~IUserConfiguration() {};
 };
 

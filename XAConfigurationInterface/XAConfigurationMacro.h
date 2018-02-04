@@ -4,8 +4,9 @@
 #define CONFIG_INDEX_FILE "ConfigIndex.xml"
 #define CONFIG_ITEM "/Item"
 #define ID_ATTRIBUTE "id"
-#define NAME_ATTRIBUTE "name"
+#define NAME_ATTRIBUTE "Name"
 #define LOCATION_ATTRIBUTE "location"
+#define VALUE_ATTRIBUTE "Value"
 #define XA_CONFIGURATION_EMPTY_STRING ""
 
 
