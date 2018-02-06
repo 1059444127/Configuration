@@ -67,27 +67,14 @@ int XAUserConfiguration::LoadUserConfig(unsigned category)
 	auto iter = _categoryLocationMap.find(category);
 	if(iter == _categoryLocationMap.end()) {return UserConfigurationResult::InvalidCategory;}
 
+	std::string sUserSettingDir = iter->second;
 	//std::string sUserSettingDir = "D:\\X-SW\\XA\\Trunk\\UIH\\appdata\\user_settings\\users\\default_user\\config\\exam\\ExamConfig.xml";//iter->second;
-	std::string sUserSettingDir = "D:\\X-SW\\XA\\Trunk\\UIH\\appdata\\user_settings\\users\\default_user\\config\\exam\\ExamConfig.xml";//iter->second;
-	std::string sConfigFileContent;
+	//std::string sUserSettingDir = "D:\\X-SW\\XA\\Trunk\\UIH\\appdata\\user_settings\\users\\default_user\\config\\exam\\ExamConfig.xml";//iter->second;
 
 	if(!_pFileParser->OpenFromUserSettingsDir(sUserSettingDir))
 	{
 		LOG_ERROR_XA_Configuration << "Fail to Get File Content From User Setting Dir [" << sUserSettingDir << "]" << LOG_END;
 		return UserConfigurationResult::InvalidFile;
-	}
-
-	//
-	if(!_pFileParser->GetFileContentFromUserSettingsDir(sUserSettingDir, sConfigFileContent))
-	{
-		LOG_ERROR_XA_Configuration << "Fail to Get File Content From User Setting Dir [" << sUserSettingDir << "]" << LOG_END;
-		return UserConfigurationResult::InvalidFile;
-	}
-
-	if(!_pFileParser->ParseByString(sConfigFileContent))
-	{
-		LOG_ERROR_XA_Configuration << "Fail to parse From File Content [" << sConfigFileContent << "]" << LOG_END;
-		return UserConfigurationResult::InvalidXmlString;
 	}
 
 	int itemNumber;
@@ -96,6 +83,8 @@ int XAUserConfiguration::LoadUserConfig(unsigned category)
 		LOG_ERROR_XA_Configuration << "Failed to parse Tag " << CONFIG_ITEM << LOG_END;
 		return UserConfigurationResult::InvalidFile;		
 	}
+
+
 
 	std::map<unsigned int, XAUserConfigItem> userConfigItemMap;
 	for (int i=0; i<itemNumber; i++)
@@ -204,3 +193,4 @@ XAUserConfiguration::~XAUserConfiguration()
 //TODO: Add EA Chart to source control
 //TODO: Add Sample Containee
 //TODO: Received User Configuration Changed Event
+//FileParser: http://alpha:8099/redmine/boards/12/topics/163
