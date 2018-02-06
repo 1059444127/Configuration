@@ -1,1 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Archiving BE containee startup configure file -->
+<!-- Root node. Needn't modify -->
+<Container>
+  <!--Config name and version
+        Name:container's name ,default empty
+        Version: this xml file's version default empty
+	-->
+  <Configuration Name='Reference' Version='0.1'></Configuration>
+  <!--Config listen address of this container
+		Host:IP address  where container locate
+		Port:Port number
+	-->
+  <ListenAddress>
+    <Host>127.0.0.1</Host>
+    <Port>0</Port>
+  </ListenAddress>
+  <!-- Config id of channel through which Archiving BE container send to all others 
+	-->
+  <SendEventChannel>11</SendEventChannel>
+  <!-- Config channel to which Archiving BE container subscribes
+		id: channel id
+		EventId: id of event in that channel Archiving BE container cares about
+
+  <ListenEventChannel>
+    <Channel Id='11'>
+      <EventId>3333</EventId>
+      <EventId>1111</EventId>
+    </Channel>
+    <Channel Id="22">
+      <EventId>4444</EventId>
+      <EventId>2222</EventId>
+    </Channel>
+  </ListenEventChannel>
+  	-->
+  <!--Config containee's dll name and it's config file
+        CustomizedConfigFile:config file name which be used by containee 
+	-->
+  <Containee>
+    <Library CustomizedConfigFile="xxx.xml">XAConfigurationContainee</Library>
+  </Containee>
+  <!--Config log file name
+		Name:log name used to identify log record,remember to add relative path	
+	-->
+  <LogConfigFile>D:/X-SW/XA/Trunk/IAS/CommonFeature/Configuration/XAConfigurationContainee/XAConfigureLogger.xml</LogConfigFile>
+</Container>
