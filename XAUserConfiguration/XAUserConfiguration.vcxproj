@@ -53,14 +53,14 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\..\..\UIH\include\mcs\;..\..\..\..\UIH\include\external\;..\..\..\..\UIH\include\PanGu\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\UIH\include\mcs\;..\..\..\..\UIH\include\external\;..\..\..\..\UIH\include\PanGu\;..\..\..\XParameters\Contract\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>XA_UserConfiguration_LIB;ULIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\..\UIH\lib_$(configuration)\external;..\..\..\..\UIH\lib_$(configuration)\mcs;..\..\..\..\UIH\lib_$(configuration)\external\boost;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\..\..\UIH\lib_$(Configuration)\mcs\$(ProjectName).lib</ImportLibrary>
-      <AdditionalDependencies>McsfLogger.lib;McsfSystemEnvironmentConfig.lib;McsfFileParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>McsfLogger.lib;McsfSystemEnvironmentConfig.lib;McsfFileParser.lib;McsfNetbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copyfile.bat</Command>
@@ -70,7 +70,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>..\include;..\..\..\..\UIH\include\mcs\;..\..\..\..\UIH\include\external\;..\..\..\..\UIH\include\PanGu\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\..\..\UIH\include\mcs\;..\..\..\..\UIH\include\external\;..\..\..\..\UIH\include\PanGu\;..\..\..\XParameters\Contract\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>XA_UserConfiguration_LIB;ULIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -78,7 +78,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\..\UIH\lib\external;..\..\..\..\UIH\lib\mcs;..\..\..\..\UIH\lib\external\boost;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\..\..\UIH\lib\mcs\$(ProjectName).lib</ImportLibrary>
-      <AdditionalDependencies>McsfLogger.lib;McsfSystemEnvironmentConfig.lib;McsfFileParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>McsfLogger.lib;McsfSystemEnvironmentConfig.lib;McsfFileParser.lib;McsfNetbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copyfile.bat</Command>

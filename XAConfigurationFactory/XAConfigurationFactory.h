@@ -2,7 +2,7 @@
 
 #include "XAConfigurationFactoryExportMacro.h"
 #include "XAConfiguration/XAConfigurationMacro.h"
-#include "../XAConfigurationInterface/IUserConfiguration.h"
+#include "XAConfiguration/IUserConfiguration.h"
 
 class XA_ConfigurationFactory_Export XAConfigurationFactory
 {

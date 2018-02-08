@@ -2,6 +2,11 @@
 #define I_USER_CONFIGURATION_H
 #include <string>
 
+namespace Mcsf
+{
+	class ICommunicationProxy;
+}
+
 class IUserConfiguration
 {
 public:
@@ -10,6 +15,8 @@ public:
 
 	virtual int SetUserConfig(unsigned int category, unsigned int tag, const std::string& value) = 0;
 	virtual int GetUserConfig(unsigned int category, unsigned int tag, std::string& value) = 0;
+
+	virtual void SetCommunicationProxy(Mcsf::ICommunicationProxy* proxy) = 0;
 
 	virtual ~IUserConfiguration() {};
 };

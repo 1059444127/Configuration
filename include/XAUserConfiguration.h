@@ -5,6 +5,7 @@
 #include <map>
 #include "XAUserConfigItem.h"
 #include "XAConfiguration/XAConfigurationMacro.h"
+#include "XAConfiguration/IConfigurationSubject.h"
 
 class XA_UserConfiguration_Export XAUserConfiguration : public IUserConfiguration
 {

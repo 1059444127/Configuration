@@ -32,6 +32,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationConsole", "X
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{8C55CEF8-C19A-48B5-9CCD-05BDEC0C1684}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration.eap = Configuration.eap
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XAConfigurationContainee", "XAConfigurationContainee\XAConfigurationContainee.vcxproj", "{E7EAC58E-5CCE-490E-BFD6-4BE7615B92AC}"
 	ProjectSection(ProjectDependencies) = postProject
